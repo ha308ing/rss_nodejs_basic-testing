@@ -1,21 +1,20 @@
 import axios from 'axios';
-import { throttledGetDataFromApi, THROTTLE_TIME } from './index';
+import { throttledGetDataFromApi } from './index';
 import { AxiosInstance } from 'axios';
 
 jest.mock('axios');
 
+jest.mock('lodash', () => ({
+  throttle: jest.fn().mockImplementation((callback) => callback),
+}));
+
 describe('throttledGetDataFromApi', () => {
   const axiosMock = jest.mocked(axios);
+
   const getSpy = jest.fn();
   const data = 'hello';
 
-  beforeAll(() => {
-    jest.useFakeTimers();
-  });
-
   beforeEach(() => {
-    jest.advanceTimersByTime(THROTTLE_TIME);
-
     getSpy.mockResolvedValue({ data });
 
     axiosMock.create.mockImplementation(() => {
@@ -23,10 +22,6 @@ describe('throttledGetDataFromApi', () => {
         get: getSpy,
       } as unknown as AxiosInstance;
     });
-  });
-
-  afterAll(() => {
-    jest.useRealTimers();
   });
 
   test('should create instance with provided base url', async () => {
