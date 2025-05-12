@@ -23,7 +23,7 @@ describe('partial mocking', () => {
     mockTwo();
     mockThree();
 
-    expect(logSpy).toBeCalledTimes(0);
+    expect(logSpy).toHaveBeenCalledTimes(0);
   });
 
   test('unmockedFunction should log into console', () => {
@@ -32,7 +32,7 @@ describe('partial mocking', () => {
 
     unmockedFunction();
 
-    expect(logSpy).toBeCalledTimes(1);
-    expect(logSpy).toBeCalledWith(message);
+    expect(logSpy).toHaveBeenCalledTimes(1);
+    expect(logSpy).toHaveBeenCalledWith(message);
   });
 });
