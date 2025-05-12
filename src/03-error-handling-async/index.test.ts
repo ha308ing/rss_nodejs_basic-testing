@@ -21,13 +21,13 @@ describe('throwError', () => {
   test('should throw error with provided message', () => {
     const errorMessage = 'Error message';
 
-    expect(() => throwError(errorMessage)).toThrowError(errorMessage);
+    expect(() => throwError(errorMessage)).toThrow(errorMessage);
   });
 
   test('should throw error with default message if message is not provided', () => {
     const defaultErrorMessage = 'Oops!';
 
-    expect(() => throwError()).toThrowError(defaultErrorMessage);
+    expect(() => throwError()).toThrow(defaultErrorMessage);
   });
 });
 
