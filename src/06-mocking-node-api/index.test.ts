@@ -3,6 +3,10 @@ import fs from 'fs';
 import fsPromises from 'fs/promises';
 import path from 'path';
 
+jest.mock('fs');
+jest.mock('fs/promises');
+jest.mock('path');
+
 describe('doStuffByTimeout', () => {
   let timeoutSpy: jest.SpyInstance;
   const callback = jest.fn();
