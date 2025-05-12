@@ -31,7 +31,6 @@ describe('throttledGetDataFromApi', () => {
 
   test('should create instance with provided base url', async () => {
     const baseURL = 'https://jsonplaceholder.typicode.com';
-    expect.assertions(1);
 
     await throttledGetDataFromApi('');
 
@@ -40,7 +39,6 @@ describe('throttledGetDataFromApi', () => {
 
   test('should perform request to correct provided url', async () => {
     const relativePath = 'relative-path';
-    expect.assertions(1);
 
     await throttledGetDataFromApi(relativePath);
 
@@ -48,8 +46,6 @@ describe('throttledGetDataFromApi', () => {
   });
 
   test('should return response data', async () => {
-    expect.assertions(1);
-
     const response = await throttledGetDataFromApi('');
 
     expect(response).toBe(data);
