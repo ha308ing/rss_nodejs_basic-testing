@@ -35,7 +35,7 @@ describe('throttledGetDataFromApi', () => {
 
     await throttledGetDataFromApi('');
 
-    expect(axiosMock.create).toBeCalledWith({ baseURL });
+    expect(axiosMock.create).toHaveBeenCalledWith({ baseURL });
   });
 
   test('should perform request to correct provided url', async () => {
@@ -44,7 +44,7 @@ describe('throttledGetDataFromApi', () => {
 
     await throttledGetDataFromApi(relativePath);
 
-    expect(getSpy).toBeCalledWith(relativePath);
+    expect(getSpy).toHaveBeenCalledWith(relativePath);
   });
 
   test('should return response data', async () => {
