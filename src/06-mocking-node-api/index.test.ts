@@ -27,14 +27,14 @@ describe('doStuffByTimeout', () => {
   test('should set timeout with provided callback and timeout', () => {
     doStuffByTimeout(callback, timeout);
 
-    expect(timeoutSpy).toBeCalledWith(callback, timeout);
+    expect(timeoutSpy).toHaveBeenCalledWith(callback, timeout);
   });
 
   test('should call callback only after timeout', () => {
     doStuffByTimeout(callback, timeout);
     jest.runAllTimers();
 
-    expect(callback).toBeCalled();
+    expect(callback).toHaveBeenCalled();
   });
 });
 
@@ -62,7 +62,7 @@ describe('doStuffByInterval', () => {
   test('should set interval with provided callback and timeout', () => {
     doStuffByInterval(callback, interval);
 
-    expect(intervalSpy).toBeCalledWith(callback, interval);
+    expect(intervalSpy).toHaveBeenCalledWith(callback, interval);
   });
 
   test('should call callback multiple times after multiple intervals', () => {
@@ -71,7 +71,7 @@ describe('doStuffByInterval', () => {
     doStuffByInterval(callback, interval);
     jest.advanceTimersToNextTimer(count);
 
-    expect(callback).toBeCalledTimes(count);
+    expect(callback).toHaveBeenCalledTimes(count);
   });
 });
 
